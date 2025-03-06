@@ -1,0 +1,25 @@
+{
+  "name": "conceitos-avancados-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnAndante/conceitos-avancados-ts-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JohnAndante/conceitos-avancados-ts-js/issues"
+  },
+  "homepage": "https://github.com/JohnAndante/conceitos-avancados-ts-js#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
