@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:factory:example:01": "ts-node design-patterns/factory/example01.ts",
-    "start:factory:example:02": "ts-node design-patterns/factory/example02.ts"
     "start:singleton:example:01": "ts-node design-patterns/singleton/Configuracao.ts",
     "start:singleton:example:02": "ts-node design-patterns/singleton/Database.ts",
+    "start:factory:example:01": "ts-node design-patterns/factory/Shapes.ts",
+    "start:factory:example:02": "ts-node design-patterns/factory/DatabaseConnection.ts",
   },
   "repository": {
     "type": "git",
