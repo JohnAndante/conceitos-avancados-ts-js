@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:singleton:example": "ts-node design-patterns/singleton/example.ts",
   },
   "repository": {
     "type": "git",
