@@ -2,20 +2,84 @@
 
 ## O que é?
 
-O padrão Facade é um padrão de projeto estrutural que fornece uma interface simplificada para um sistema complexo de classes, bibliotecas ou APIs. Ele atua como uma fachada para ocultar a complexidade do sistema subjacente e fornecer uma interface unificada para o cliente.
+Facade é um **structural pattern** que fornece uma interface unificada para um conjunto de interfaces em um subsistema. Ele define uma interface de nível mais alto que facilita o uso do subsistema, ocultando a complexidade de suas classes internas.
 
-Um exemplo simples de uso do padrão Facade é um sistema de reprodução de mídia, que pode envolver várias classes e APIs para reproduzir áudio e vídeo. A fachada `MediaPlayer` pode fornecer métodos simples como `play`, `pause` e `stop` para controlar a reprodução, ocultando a complexidade de interagir com as classes subjacentes.
+Um bom exemplo de uso do padrão Facade é em bibliotecas de terceiros, como o Prisma Client. Ao fornecer uma interface unificada para interagir com o banco de dados, o padrão Facade ajuda a simplificar o código do cliente e a ocultar a complexidade de como as operações no banco de dados são realizadas.
+
+## Problema
+
+Imagine que vocẽ possua um subsistema complexo, onde existem várias classes e métodos para realizar diferentes operações, várias delas não dependem uma das outras. Se você precisar interagir com esse subsistema, terá que lidar com a complexidade de cada uma dessas classes e métodos, o que pode tornar o código difícil de entender e manter.
+
+A solução para esse problema é criar uma interface unificada que encapsule a complexidade do subsistema e forneça um ponto de acesso simples para interagir com ele. É exatamente isso que o padrão Facade faz.
 
 ## Como funciona?
 
-A idéia principal de uma facade é esconder o funcionamento complexo do resto do sistema, disponibilizando uma interface simples e unificada para o cliente. Isso permite que o cliente interaja com o sistema sem precisar conhecer os detalhes internos de como ele funciona.
+O padrão Facade geralmente envolve os seguintes passos:
+
+1. **Interface Unificada**: Uma interface unificada é criada para o subsistema, fornecendo um ponto de acesso simples para interagir com ele.
+
+2. **Classe Facade**: Uma classe Facade é criada para implementar a interface unificada e delegar as chamadas aos métodos do subsistema.
+
+```typescript
+interface Subsystem {
+  operation(): void;
+}
+
+class SubsystemA {
+  public operation(): void {
+    console.log('Subsystem A: Operation A');
+  }
+}
+
+class SubsystemB {
+  public operation(): void {
+    console.log('Subsystem B: Operation B');
+  }
+}
+
+class Subsystem...
+
+class Facade {
+  private subsystemA: SubsystemA;
+  private subsystemB: SubsystemB;
+  ...
+
+  constructor() {
+    this.subsystemA = new SubsystemA();
+    this.subsystemB = new SubsystemB();
+    ...
+  }
+
+  public operation(): void {
+    this.subsystemA.operation();
+    this.subsystemB.operation();
+    ...
+  }
+}
+```
 
 ## Quando utilizar?
 
-- Quando existem subsistemas ou lógicas complexas que precisam ser simplificadas para o cliente/usuário.
-- Quando é necessário reduzir o acoplamento entre o cliente e as classes do sistema.
+Em situações como:
 
-## Quando não utilizar?
+- **Integração com bibliotecas de terceiros**
+  Utilizado para fornecer uma interface unificada para interagir com bibliotecas de terceiros, ocultando a complexidade de suas classes internas.
 
-- Quando a complexidade do sistema não é um problema para o cliente/usuário.
-- Quando o sistema é simples e não requer uma interface unificada.
+- **Sistemas complexos**
+  Utilizado para simplificar a interação com subsistemas complexos, fornecendo um ponto de acesso simples para realizar operações.
+
+- **APIs**
+  Utilizado para fornecer uma interface unificada para interagir com APIs, ocultando a complexidade de como as operações são realizadas.
+
+## Vantagens e Desvantagens
+
+### Vantagens
+
+- Simplifica a interação com subsistemas complexos.
+- Fornece um ponto de acesso simples para realizar operações.
+- Isola e modulariza a complexidade do subsistema, facilitando a manutenção e a evolução do código.
+
+### Desvantagens
+
+- Pode adicionar uma camada adicional de abstração ao código, tornando-o mais difícil de entender.
+- Caso a lógica fique muito complexa, a classe Facade pode encapsular código excessivo, tornando-a menos legível.

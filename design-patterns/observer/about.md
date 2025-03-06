@@ -2,7 +2,15 @@
 
 ## O que é?
 
-Observer é um padrão de design de **comportamento** que permite definir uma "inscrição" de dependências entre objetos, de modo que quando um objeto muda de estado, todos os objetos dependentes são notificados e atualizados automaticamente.
+Observer é um **behavioral pattern** que define uma dependência um-para-muitos entre objetos, de modo que quando um objeto muda de estado, todos os seus dependentes são notificados e atualizados automaticamente.
+
+Um exemplo clássico de uso do padrão Observer é em aplicações de chat, onde várias pessoas estão conversando em uma sala. Quando alguém envia uma mensagem, todos os outros participantes da sala são notificados e veem a mensagem em tempo real.
+
+## Problema
+
+Imagine que você tenha um objeto que precisa notificar outros objetos sobre mudanças em seu estado, como por exemplo um aplicativo de clima que precisa notificar vários widgets sobre mudanças na temperatura. Se você acoplar diretamente a lógica de notificação ao objeto, isso pode levar a um código complexo e difícil de manter.
+
+A solução para esse problema é desacoplar a lógica de notificação do objeto e permitir que outros objetos se inscrevam para receber notificações. É dessa forma que o padrão Observer funciona.
 
 ## Como funciona?
 
@@ -44,12 +52,24 @@ class ConcreteObserver implements Observer {
 
 ## Quando utilizar?
 
-- Quando você tem uma situação em que um objeto precisa notificar outros objetos sobre mudanças em seu estado
-- Quando você deseja desacoplar a lógica de notificação de um objeto da lógica de processamento de outros objetos
-- Quando você deseja permitir que vários objetos respondam a mudanças em um objeto sem acoplá-los diretamente a ele
+Em situações como:
 
-## Quando não utilizar?
+- **Conexões em tempo real**
+  Utilizado para notificar vários clientes sobre mudanças em um objeto em tempo real, como em aplicações de chat, sistemas de monitoramento, ou disparo de eventos.
 
-- Quando a lógica de notificação é simples e não justifica a introdução de um padrão Observer
-- Quando a lógica de notificação é altamente acoplada à lógica de processamento de outros objetos
-- Quando a lógica de notificação é altamente variável e difícil de encapsular em uma interface comum
+- **Eventos condicionais**
+  Quando você deseja notificar vários objetos sobre mudanças em um objeto, mas apenas se determinadas condições forem atendidas.
+
+## Vantagens e Desvantagens
+
+### Vantagens
+
+- Desacopla o objeto que emite notificações dos objetos que as recebem.
+- Permite que novos observadores sejam adicionados, com suas lógicas individuais, sem modificar o objeto que emite notificações.
+- Permite que os observadores sejam notificados de mudanças em tempo real.
+
+### Desvantagens
+
+- Pode levar a problemas de desempenho se houver muitos observadores registrados.
+- Os observadores são notificados em ordem aleatória, o que pode levar a comportamentos inesperados se a ordem for importante.
+- Pode ser difícil garantir que os observadores sejam notificados apenas uma vez, especialmente em ambientes multithread.

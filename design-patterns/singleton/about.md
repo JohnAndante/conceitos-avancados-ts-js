@@ -2,27 +2,15 @@
 
 ## O que é?
 
-Singleton é um padrão de projeto que garante que uma classe tenha apenas uma instância, fornecendo um ponto de acesso global a ela. É extremamente útil quando é necessário limitar o número de instâncias de uma classe a um único objeto.
+Singleton é um **creational pattern** que garante que uma classe tenha apenas uma instância, fornecendo um ponto de acesso global a ela. É extremamente útil quando é necessário limitar o número de instâncias de uma classe a um único objeto.
 
 Um exemplo clássico de uso do padrão Singleton é em classes que gerenciam conexões a bancos de dados, como o Prisma Client. Ao garantir que apenas uma instância do cliente Prisma seja criada, o padrão ajuda a evitar problemas de concorrência e garante que todas as operações no banco de dados sejam realizadas através da mesma instância.
 
-```typescript
-import { PrismaClient } from '@prisma/client';
+## Problema
 
-class Database {
-  private static instance: PrismaClient;
+Imagine que você tenha uma classe que representa uma configuração de aplicação e queira garantir que apenas uma instância dessa classe seja criada. Se várias instâncias forem criadas, cada uma delas poderá ter valores diferentes, o que pode levar a comportamentos inesperados na aplicação.
 
-  private constructor() {}
-
-  public static getInstance(): PrismaClient {
-    if (!Database.instance) {
-      Database.instance = new PrismaClient();
-    }
-
-    return Database.instance;
-  }
-}
-```
+A solução para esse problema é garantir que apenas uma instância da classe seja criada e que todas as outras partes da aplicação acessem essa mesma instância. É exatamente isso que o padrão Singleton faz.
 
 ## Como funciona?
 
@@ -31,8 +19,6 @@ O padrão Singleton geralmente envolve os seguintes passos:
 1. **Construtor Privado**: O construtor da classe é declarado como privado, impedindo que outras classes criem instâncias dela diretamente.
 
 2. **Método Estático**: Um método estático é criado para fornecer acesso à instância única da classe. Esse método verifica se a instância já foi criada e, caso contrário, cria uma nova instância.
-
-## Exemplos
 
 ```typescript
 class Singleton {
@@ -66,13 +52,16 @@ Em situações como:
 - **Filas de mensagens**
   Utilizado para garantir que todas as mensagens sejam processadas por uma única instância, evitando duplicação de mensagens e respeitando a ordem de processamento.
 
-## Quando não utilizar?
+## Vantagens e Desvantagens
 
-- **Aplicações altamente pararelas**
-    O padrão Singleton pode se tornar um gargalo em aplicações altamente paralelas, onde múltiplas threads ou processos tentam acessar a mesma instância simultaneamente, como instâncias de banco de dados.
+### Vantagens
 
-- **Testes unitários**
-    O padrão Singleton pode dificultar a realização de testes unitários, pois a instância única pode manter estado entre os testes, levando a resultados inconsistentes.
+- Garante que apenas uma instância da classe seja criada.
+- Fornece um ponto de acesso global à instância da classe.
+- O objeto só é inicializado quando é requisitado pela primeira vez, economizando recursos.
 
-- **Serviços temporários**
-    O padrão Singleton não é adequado para serviços que precisam ser criados e destruídos frequentemente, como serviços de autenticação.
+### Desvantagens
+
+- Pode mascarar uma classe que está fazendo muito trabalho, tornando-a menos legível.
+- Precisa de uma atenção quando lidando com um ambiente multithread, para garantir que a instância única seja criada corretamente.
+- Dificulta a criação de testes unitários, pois a classe Singleton pode ter dependências difíceis de isolar.

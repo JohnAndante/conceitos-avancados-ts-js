@@ -2,101 +2,79 @@
 
 ## O que é?
 
-O **Adapter** é uma estrutura de design pattern que permite que objetos com interfaces incompatíveis possam trabalhar juntos.
+Adapter é um **structural pattern** que permite que objetos com interfaces incompatíveis trabalhem juntos. Ele atua como um intermediário entre dois objetos, traduzindo chamadas de um objeto para o outro.
 
-Ele atua como um intermediário entre os objetos, "traduzindo" as chamadas de um objeto para o outro.
+Um bom exemplo de uso do padrão Adapter é a conexão de um dispositivo USB a uma porta Thunderbolt em um computador. Como as interfaces dos dispositivos são incompatíveis, um adaptador é necessário para traduzir as chamadas de um dispositivo para o outro.
 
-```typescript
-class Target {
-    public request(): string {
-        return 'Target: The default target\'s behavior.';
-    }
-}
+## Problema
 
-class Adaptee {
-    public specificRequest(): string {
-        return '.eetpadA eht fo roivaheb laicepS';
-    }
-}
+Imagine que você tenha um sistema de pagamentos que utiliza um serviço antigo para processar pagamentos. Agora, você deseja migrar para um novo serviço de pagamentos que possui uma interface diferente, porém não pode modificar o código do sistema antigo. Como você pode conectar o novo serviço ao sistema antigo sem modificar o código existente?
 
-class Adapter extends Target {
-    private adaptee: Adaptee;
-
-    constructor(adaptee: Adaptee) {
-        super();
-        this.adaptee = adaptee;
-    }
-
-    // Reescreve o método request() para chamar o método specificRequest() do Adaptee
-    public request(): string {
-        const result = this.adaptee.specificRequest().split('').reverse().join('');
-        return `Adapter: (TRANSLATED) ${result}`;
-    }
-}
-```
+A solução para esse problema é usar o padrão Adapter, que permite que o novo serviço de pagamentos seja adaptado para a interface esperada pelo sistema antigo, sem a necessidade de modificar o código existente.
 
 ## Como funciona?
 
-O **adapter** atua como um tradutor entre duas classes, permitindo que uma interface incompatível seja adaptada para outra.
+O padrão Adapter geralmente envolve os seguintes passos:
 
-Ele recebe chamadas de um objeto "cliente" e as converte para o formato esperado pelo outro objeto "serviço".
+1. **Interface Incompatível**: Duas classes possuem interfaces incompatíveis que precisam trabalhar juntas.
 
-## Exemplos
+2. **Adapter**: Um adaptador é criado para traduzir as chamadas de uma interface para a outra. O adaptador implementa a interface esperada pelo cliente e contém uma instância da classe que possui a interface incompatível.
+
+3. **Cliente**: O cliente utiliza o adaptador para chamar os métodos da classe com a interface incompatível, sem precisar saber como a tradução é feita.
 
 ```typescript
-// Interface esperada pelo sistema atual
-interface Pagamento {
-  processarPagamento(valor: number): void;
+// Interface que define o formato esperado pelo sistema
+interface Target {
+  request(): string;
 }
 
-// Serviço antigo (compatível)
-class PagamentoAntigo implements Pagamento {
-  processarPagamento(valor: number): void {
-    console.log(`Pagamento de R$${valor} processado pelo sistema antigo`);
+// Classe Adaptee (a classe que tem uma interface diferente)
+class Adaptee {
+  specificRequest(): string {
+    return "Resposta específica do Adaptee";
   }
 }
 
-// Novo serviço com uma interface diferente
-class NovoPagamento {
-  realizarPagamento(valor: number): void {
-    console.log(`Pagamento de R$${valor} realizado pelo novo sistema`);
+// Adapter que traduz a interface do Adaptee para a interface Target
+class Adapter implements Target {
+  private adaptee: Adaptee;
+
+  constructor(adaptee: Adaptee) {
+    this.adaptee = adaptee;
+  }
+
+  request(): string {
+    return this.adaptee.specificRequest();
   }
 }
-
-// Adapter para conectar o novo serviço ao sistema antigo
-class PagamentoAdapter implements Pagamento {
-  private novoPagamento: NovoPagamento;
-
-  constructor(novoPagamento: NovoPagamento) {
-    this.novoPagamento = novoPagamento;
-  }
-
-  processarPagamento(valor: number): void {
-    console.log("Adaptando chamada para o novo sistema...");
-    this.novoPagamento.realizarPagamento(valor);
-  }
-}
-
-// Execução
-console.log("=== Sistema Antigo ===");
-const pagamentoAntigo = new PagamentoAntigo();
-pagamentoAntigo.processarPagamento(100);
-
-console.log("\n=== Sistema com Adapter ===");
-const novoPagamento = new NovoPagamento();
-const pagamentoAdaptado = new PagamentoAdapter(novoPagamento);
-pagamentoAdaptado.processarPagamento(200);
-
 ```
 
 ## Quando utilizar?
 
-- Quando necessário integar sistemas legados com partes novas do sistema.
-- Quando for necessário reutilizar classes existentes sem modificar o código atual.
-- Quandp duas interfaces forem, de fato, incompartíveis, mas precisam trabalhar juntas.
+Em situações como:
 
-## Quando não utilizar?
+- **Integração de sistemas legados**:
+  Utilizado para integrar sistemas legados com novos sistemas, permitindo que eles trabalhem juntos sem a necessidade de modificar o código existente.
 
-- Quando as classes já forem compatíveis entre si.
-- Quando a diferença entre as interfaces forem mínimas e puderem ser resolvidas de outra forma.
-- Quando a complexidade do Adapter for maior do que a solução direta do problema.
+- **Reutilização de código**:
+  Utilizado para reutilizar classes existentes que possuem interfaces incompatíveis com o restante do sistema, sem a necessidade de modificar o código existente.
+
+- **Conexão de bibliotecas de terceiros**:
+  Utilizado para conectar bibliotecas de terceiros com o restante do sistema, permitindo que elas sejam usadas sem a necessidade de modificar o código existente.
+
+- **Adaptação de interfaces**:
+  Utilizado para adaptar a interface de um objeto para outra interface esperada pelo cliente, permitindo que objetos incompatíveis trabalhem juntos.
+
+## Vantagens e Desvantagens
+
+### Vantagens
+
+- Permite que objetos com interfaces incompatíveis trabalhem juntos.
+- Solução rápida e eficaz para integrar sistemas legados com novos sistemas.
+- Ajuda a reutilizar classes existentes sem a necessidade de modificar o código existente.
+
+### Desvantagens
+
+- Pode levar a um aumento da complexidade do código, especialmente se vários adaptadores forem necessários.
+- Caso o número de adaptações aumente, pode ser difícil manter o código.
+- Por vezes, a melhor iniciativa é refatorar o código para que as interfaces sejam compatíveis.
