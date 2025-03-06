@@ -13,7 +13,9 @@
     "start:facade:example:01": "ts-node design-patterns/facade/Autenticacao.ts",
     "start:facade:example:02": "ts-node design-patterns/facade/MediaPlayer.ts",
     "start:state:example:01": "ts-node design-patterns/state/Pedido.ts",
-    "start:state:example:02": "ts-node design-patterns/state/MediaPlayerState.ts"
+    "start:state:example:02": "ts-node design-patterns/state/MediaPlayerState.ts",
+    "start:observer:example:01": "ts-node design-patterns/observer/OrderNotifier.ts",
+    "start:observer:example:02": "ts-node design-patterns/observer/AuthSubject.ts"
   },
   "repository": {
     "type": "git",
