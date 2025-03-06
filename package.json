@@ -9,7 +9,9 @@
     "start:factory:example:01": "ts-node design-patterns/factory/Shapes.ts",
     "start:factory:example:02": "ts-node design-patterns/factory/DatabaseConnection.ts",
     "start:adapter:example:01": "ts-node design-patterns/adapter/Pagamento.ts",
-    "start:adapter:example:02": "ts-node design-patterns/adapter/Notificador.ts"
+    "start:adapter:example:02": "ts-node design-patterns/adapter/Notificador.ts",
+    "start:facade:example:01": "ts-node design-patterns/facade/Autenticacao.ts",
+    "start:facade:example:02": "ts-node design-patterns/facade/MediaPlayer.ts"
   },
   "repository": {
     "type": "git",
