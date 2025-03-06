@@ -11,7 +11,9 @@
     "start:adapter:example:01": "ts-node design-patterns/adapter/Pagamento.ts",
     "start:adapter:example:02": "ts-node design-patterns/adapter/Notificador.ts",
     "start:facade:example:01": "ts-node design-patterns/facade/Autenticacao.ts",
-    "start:facade:example:02": "ts-node design-patterns/facade/MediaPlayer.ts"
+    "start:facade:example:02": "ts-node design-patterns/facade/MediaPlayer.ts",
+    "start:state:example:01": "ts-node design-patterns/state/Pedido.ts",
+    "start:state:example:02": "ts-node design-patterns/state/MediaPlayerState.ts"
   },
   "repository": {
     "type": "git",
