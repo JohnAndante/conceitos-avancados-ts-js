@@ -8,6 +8,8 @@
     "start:singleton:example:02": "ts-node design-patterns/singleton/Database.ts",
     "start:factory:example:01": "ts-node design-patterns/factory/Shapes.ts",
     "start:factory:example:02": "ts-node design-patterns/factory/DatabaseConnection.ts",
+    "start:adapter:example:01": "ts-node design-patterns/adapter/Pagamento.ts",
+    "start:adapter:example:02": "ts-node design-patterns/adapter/Notificador.ts"
   },
   "repository": {
     "type": "git",
