@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start:singleton:example": "ts-node design-patterns/singleton/example.ts",
+    "start:factory:example:01": "ts-node design-patterns/factory/example01.ts",
+    "start:factory:example:02": "ts-node design-patterns/factory/example02.ts"
   },
   "repository": {
     "type": "git",
