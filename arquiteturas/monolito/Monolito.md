@@ -60,3 +60,15 @@ graph TD;
 
 - **Projetos que precisam de desenvolvimento rápido**
   Para projetos que precisam ser desenvolvidos rapidamente, o monolito pode ser uma boa escolha, pois é mais simples de configurar e gerenciar.
+
+## Quando não utilizar?
+
+- **Projetos grandes**
+  Para projetos grandes, com muitos desenvolvedores e que devem crescer muito, o monolito pode ser uma má escolha, pois pode se tornar difícil de gerenciar.
+
+- **Equipes grandes**
+  Para equipes grandes, o monolito pode ser uma má escolha, pois pode ser difícil de gerenciar e dividir as responsabilidades.
+
+- **Implantações e atualizações frequentes**
+  Para aplicações que precisam de implantações e atualizações frequentes, o monolito pode ser uma má escolha, pois pode ser difícil de gerenciar e aumentar o risco de falhas.
+

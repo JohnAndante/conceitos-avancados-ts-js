@@ -76,3 +76,19 @@ sequenceDiagram
 - **Complexidade:** A arquitetura de microsserviços é mais complexa do que a arquitetura monolítica, por envolver a comunicação entre vários serviços.
 - **Latência:** A comunicação entre os serviços pode adicionar latência ao sistema.
 - **Consistência:** Garantir a consistência dos dados entre os serviços pode ser um desafio.
+
+## Quando usar?
+
+- **Aplicações grandes:** Quando a aplicação é grande e complexa, a arquitetura de microsserviços pode ser uma boa escolha.
+
+- **Equipes grandes:** Quando há várias equipes trabalhando em diferentes partes da aplicação, a arquitetura de microsserviços pode ser uma boa escolha.
+
+- **Necessidade de escalabilidade:** Quando a aplicação precisa ser escalada, a arquitetura de microsserviços pode ser uma boa escolha.
+
+## Quando não utilizar?
+
+- **Projetos simples**: Quando a aplicação é simples e não precisa de escalabilidade, a arquitetura de microsserviços pode ser uma má escolha.
+
+- **Tempo curto para desenvolvimento**: Quando o tempo para desenvolvimento é curto, a arquitetura de microsserviços pode ser uma má escolha.
+
+- **Orçamento baixo ou limitação de recursos**: Quando o orçamento é baixo ou há limitação de recursos, a arquitetura de microsserviços pode ser uma má escolha.
