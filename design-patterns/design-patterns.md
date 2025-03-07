@@ -20,7 +20,10 @@ Diferentes de algoritmos, que são soluções step-by-step para problemas comput
 Tratam da instanciação de objetos, buscando formas de criar objetos de forma mais flexível e eficiente.
 
 - [Singleton](./singleton/about.md)
-- [Factory](./factory-method/about.md)
+- [Factory](./factory/about.md)
+- Abstract Factory
+- Builder
+- Prototype
 
 ### Padrões Estruturais
 
@@ -28,6 +31,11 @@ Tratam da composição de classes e objetos, buscando formas de organizar e estr
 
 - [Adapter](./adapter/about.md)
 - [Facade](./facade/about.md)
+- Bridge
+- Composite
+- Decorator
+- Flyweight
+- Proxy
 
 ### Padrões Comportamentais
 
@@ -35,3 +43,11 @@ Tratam da comunicação entre objetos, buscando formas de organizar e estruturar
 
 - [State](./state/about.md)
 - [Observer](./observer/about.md)
+- Chain of Responsibility
+- Command
+- Memento
+- Template Method
+- Strategy
+- Visitor
+- Iterator
+- Mediator
