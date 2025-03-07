@@ -1,3 +1,4 @@
+<!-- Link da apresentação: https://my.visme.co/view/mx06xrd3-conceitos-avancados-de-js-e-ts-design-patterns -->
 # Design Patterns
 
 ## O que são?
