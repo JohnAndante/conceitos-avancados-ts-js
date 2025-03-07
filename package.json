@@ -21,12 +21,8 @@
     "url": "git+https://github.com/JohnAndante/conceitos-avancados-ts-js.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/JohnAndante/conceitos-avancados-ts-js/issues"
-  },
+  "author": "JohnAndante",
+  "type": "module",
   "homepage": "https://github.com/JohnAndante/conceitos-avancados-ts-js#readme",
   "devDependencies": {
     "@types/node": "^22.13.9",
